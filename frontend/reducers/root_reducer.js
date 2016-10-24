@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 import notes from './notes_reducer';
+import tracksReducer from './tracks_reducer';
+import isRecordingReducer from './is_recording_reducer';
 
-const rootReducer = combineReducers({notes});
+const rootReducer = combineReducers({notes, tracksReducer, isRecordingReducer});
 
 export default rootReducer;
