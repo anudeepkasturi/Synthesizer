@@ -1,8 +1,9 @@
 import React from 'react';
+import SynthContainer from './synth/synth_container';
 
 
 export default class appComponent extends React.Component{
   render(){
-    return (<div className='app'>new app component</div>);
+    return (<SynthContainer />);
   }
 }

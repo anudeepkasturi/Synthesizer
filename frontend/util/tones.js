@@ -5,7 +5,8 @@ export const TONES = {
   'f': 698.46,
   'g': 783.99,
   'h': 880.00,
-  'j': 987.77
+  'j': 987.77,
+  'k': 1046.50
 };
 
 export const NOTE_NAMES = Object.keys(TONES);

@@ -15,7 +15,12 @@ const notes = (state = defaultState, action) => {
       }
     case KEY_RELEASED:
       const newState = state.slice();
-      newState.remove(action.key);
+
+      let indexToDelete = newState.indexOf(action.key);
+      if (indexToDelete > -1) {
+        newState.splice(indexToDelete, 1);
+      }
+
       return newState;
     default:
       return state;
