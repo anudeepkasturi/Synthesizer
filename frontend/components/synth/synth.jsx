@@ -47,6 +47,7 @@ class Synth extends React.Component {
     this.playNotes();
     const notes = this.notes.map((note, index) => {
       return (<NoteKey
+        key={index}
         note={note[0]}
         pressed={this.props.notes.includes(note[0])} />
       );

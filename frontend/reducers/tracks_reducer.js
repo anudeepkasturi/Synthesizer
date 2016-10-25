@@ -1,17 +1,25 @@
 import { START_RECORDING, STOP_RECORDING, ADD_NOTES }
   from '../actions/tracks_actions';
 
-import { merge } from 'lodash/merge';
+import merge from 'lodash/merge';
 
-let currTrackId = 0;
 
 const tracksReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case START_RECORDING:
+      let currTrackId = 1;
+      const newTrack = {
+        id: currTrackId,
+        name: `Track ${currTrackId}`,
+        roll: [],
+        timeStart: new Date().getTime()
+      };
+      let newerState = merge({}, state);
+      newerState[currTrackId] = newTrack;
       currTrackId++;
-      let track = newTrack;
-      return merge(state, track);
+      return newerState;
+
     case STOP_RECORDING:
       let newState = merge({}, state);
       newState.roll.push({
@@ -23,16 +31,15 @@ const tracksReducer = (state = {}, action) => {
       let newRoll = {
         notes: action.notes,
         timeSlice: action.timeNow - state[currTrackId].timeStart};
-      let newState = merge({}, state);
-      newState.roll.push(newRoll);
-      return newState;
+      let newState1 = merge({}, state);
+      newState1.roll.push(newRoll);
+      return newState1;
     default:
       return state;
   }
 
 };
 
-const newTrack = {id: currTrackId,  name: `Track ${currTrackId}`,  roll: [],  timeStart: new Date().getTime()};
 
 
 
